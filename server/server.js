@@ -1,24 +1,31 @@
-//Framework Configuration
-const express = require("express");
-const connectDb = require("./config/dbConnection");
-const errorHandler = require("./middleware/errorHandler");
-const cors = require("cors");
+const express= require("express");
+const connectDb= require("./config/dbConnection");
+const errorHandler = require("./middlewares/errorHandler");
+const cors= require ("cors");
+
+// env file config
+const dotenv = require("dotenv");
+dotenv.config();
 
 connectDb();
 const app = express();
-const port = process.env.PORT || 5000;
+const port= process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
-// Error handling middleware
+
+//Error handling
 app.use(errorHandler);
 
-// Router Below
-app.get('/',(req,res)=>{
-    res.send("Working......");
+
+//Routes below
+app.get("/",(req,res)=>{
+    res.send("working......")
 });
 
-// APP Config Start
+app.set('view engine', 'hbs');
+
+
 app.listen(port, () => {
-    console.log(`Server running on port http://localhost:${port}`);
+    console.log(`Server is running on port http://localhost:${port}`);
 });
