@@ -19,6 +19,9 @@ app.use(cors());
 //Error handling
 app.use(errorHandler);
 
+// Route for user registration and authentication
+app.use("/api/register", require("./routes/userRoutes"));
+
 
 //Routes below
 app.get("/",(req,res)=>{
@@ -41,3 +44,4 @@ hbs.registerPartials(path.join(__dirname, '/views/partials'));
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);
 });
+
