@@ -5,6 +5,8 @@ const cors = require("cors");
 const hbs = require("hbs");
 const path = require("path");
 const dotenv = require("dotenv");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 // Environment variable configuration
 dotenv.config();
@@ -38,7 +40,7 @@ app.get("/", (req, res) => {
 
 app.get("/home", (req, res) => {
     res.render("home", { 
-        username: "Piyush",
+        username: "Raghav",
         age: 20,
     });
 });
@@ -51,6 +53,12 @@ app.get("/user", (req, res) => {
     ];
     
     res.render("user", { users });
+});
+
+app.post('/profile', upload.single('avatar'), function (req, res, next) {
+    console.log(req.body);
+    console.log(req.file);
+    return res.redirect("/home");
 });
 
 // Server Listening

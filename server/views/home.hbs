@@ -10,5 +10,14 @@
     <a href="/user"><h2>redirect to user List</h2></a>
     <h1>Welcome, {{username}}!</h1>
     <p>Age: {{age}}</p>
+
+    <div class="form-container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file">Choose a file:</label>
+            <input type="file" id="file" name="file">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
 </body>
 </html>
