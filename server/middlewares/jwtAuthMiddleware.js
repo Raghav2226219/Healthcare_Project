@@ -25,3 +25,5 @@ const validateJwtToken = (req, res, next) => {
         next();
     });
 };
+
+module.exports = { jwtAuthMiddleware: generateJwtToken,validateJwtToken };
